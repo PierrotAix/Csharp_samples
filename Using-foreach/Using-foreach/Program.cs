@@ -12,9 +12,11 @@ namespace Using_foreach
         {
             Console.WriteLine("Début du test");
 
-            foreach (Char c in "Hello world !")
+            List<string> maListe = new List<string> { "lundi", "mardi", "mercredi", "jeudi", "vendredi" };
+
+            foreach (string jour in maListe)
             {
-                Console.WriteLine(c);
+                Console.WriteLine(jour);
             }
 
 
