@@ -1,0 +1,7 @@
+D:\BITBUCKET\demo\Csharp_sample_Using-foreach\Using-foreach\Using-foreach\bin\Debug\Using-foreach.exe.config
+D:\BITBUCKET\demo\Csharp_sample_Using-foreach\Using-foreach\Using-foreach\bin\Debug\Using-foreach.exe
+D:\BITBUCKET\demo\Csharp_sample_Using-foreach\Using-foreach\Using-foreach\bin\Debug\Using-foreach.pdb
+D:\BITBUCKET\demo\Csharp_sample_Using-foreach\Using-foreach\Using-foreach\obj\Debug\Using-foreach.csprojAssemblyReference.cache
+D:\BITBUCKET\demo\Csharp_sample_Using-foreach\Using-foreach\Using-foreach\obj\Debug\Using-foreach.csproj.CoreCompileInputs.cache
+D:\BITBUCKET\demo\Csharp_sample_Using-foreach\Using-foreach\Using-foreach\obj\Debug\Using-foreach.exe
+D:\BITBUCKET\demo\Csharp_sample_Using-foreach\Using-foreach\Using-foreach\obj\Debug\Using-foreach.pdb
