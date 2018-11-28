@@ -15,7 +15,7 @@ namespace Using_foreach
 
             List<string> maListe = new List<string>();
 
-            // lecture depuis un fichier texte
+            // lecture depuis un fichier texte qui se trouve avec l'executable
             string line;
             StreamReader file = new StreamReader("jours.txt", Encoding.ASCII);
 
