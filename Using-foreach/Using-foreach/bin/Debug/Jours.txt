@@ -7,3 +7,4 @@ Samedi
 Dimanche
 jour qui n'existe pas...
 exmemple de modification de master
+jour férié de 2018 afin de tester la branch mon-test
