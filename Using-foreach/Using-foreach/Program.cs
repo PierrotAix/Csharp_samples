@@ -16,6 +16,8 @@ namespace Using_foreach
             List<string> maListe = new List<string>();
 
             // lecture depuis un fichier texte qui se trouve avec l'executable
+            // ce fichier se trouve dans .\Using-foreach\Using-foreach\bin\Debug\Jours.txt
+            // encore un changement de commentaire
             string line;
             StreamReader file = new StreamReader("jours.txt", Encoding.ASCII);
 
