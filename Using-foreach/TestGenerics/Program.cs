@@ -17,11 +17,188 @@ namespace TestGenerics
             //TestDictionnaire();
             //TestAfficheRepresentationPremiereVersion()
             //TestAfficheRepresentationSecondeVersion();
-            TestEchanger();
+            //TestEchanger();
+            //TestClassGenerique(); //Créer une classe générique
+            //TestRestrictions(); // Restriction sur une métode
+            //TestRestrictionClasse(); // Restriction sur une classe
+            TestTypeNullable();
 
 
             Console.WriteLine("Fin du test, tapez sur une touche pour sortir");
             Console.ReadKey();
+        }
+
+        private static void TestTypeNullable()
+        {
+            //Nullable<int> entier = null;
+            int? entier = null; //simplification d'écriture
+            if (!entier.HasValue)
+            {
+                Console.WriteLine("L'entier n'a pas de valeur");
+            }
+            entier = 5;
+            if (entier.HasValue)
+            {
+                Console.WriteLine("Valeur de l'entier : " + entier);
+            }
+        }
+
+        public class TypeValeurNull<T> where T : struct
+        {
+            private bool aUneValeur;
+            public bool AUneValeur
+            {
+                get { return aUneValeur; }
+            }
+            private T valeur;
+
+            public T Valeur
+            {
+                get
+                {
+                    if (aUneValeur)
+                        return valeur;
+                    throw new InvalidOperationException();
+                }
+                set
+                {
+                    aUneValeur = true;
+                    valeur = value;
+                }
+            }
+
+        }
+
+        private static void TestRestrictionClasse()
+        {
+            TypeValeurNull<int> entier = new TypeValeurNull<int>();
+            if (!entier.AUneValeur)
+            {
+                Console.WriteLine("L'entier n'a pas de valeur");
+            }
+            entier.Valeur = 5;
+            if (entier.AUneValeur)
+            {
+                Console.WriteLine("Valeur de l'entier : "+ entier.Valeur);
+            }
+        }
+
+        public interface IVolant
+        {
+            void DeplierLesAiles();
+            void Voler();
+        }
+
+        public class Avion : IVolant
+        {
+            public void DeplierLesAiles()
+            {
+                Console.WriteLine("Je déploie mes ailes mécaniques");
+            }
+
+            public void Voler()
+            {
+                Console.WriteLine("J'allume le moteur");
+            }
+        }
+
+        public class Oiseau : IVolant
+        {
+            public void DeplierLesAiles()
+            {
+                Console.WriteLine("Je déploie mes ailes d'oiseau");
+            }
+
+            public void Voler()
+            {
+                Console.WriteLine("Je bats des ailes");                
+            }
+        }
+
+
+        public static T Creer<T>() where T : IVolant, new()
+        {
+            T t = new T();
+            t.DeplierLesAiles();
+            t.Voler();
+            return t;
+        }
+
+
+        private static void TestRestrictions()
+        {
+            Oiseau oiseau = Creer<Oiseau>();
+            Avion a380 = Creer<Avion>();
+            /*
+            Je déploie mes ailes d'oiseau
+            Je bats des ailes
+            Je déploie mes ailes mécaniques
+            J'allume le moteur
+            */
+            //Voiture v = Creer<Voiture>();
+        }
+
+
+        private static void TestClassGenerique()
+        {
+            MalIsteGenerique<int> maListe = new MalIsteGenerique<int>();
+            maListe.Ajouter(25);
+            maListe.Ajouter(20);
+            maListe.Ajouter(30);
+            maListe.Ajouter(7);
+            maListe.Ajouter(55);
+
+            Console.WriteLine("maListe.ObtenirElement(0) : " + maListe.ObtenirElement(0) );
+            Console.WriteLine("maListe.ObtenirElement(1) : " + maListe.ObtenirElement(1));
+            Console.WriteLine("maListe.ObtenirElement(2) : " + maListe.ObtenirElement(2));
+            Console.WriteLine("maListe.ObtenirElement(3) : " + maListe.ObtenirElement(3));
+            Console.WriteLine("maListe.ObtenirElement(4) : " + maListe.ObtenirElement(4));
+            Console.WriteLine("maListe.ObtenirElement(5) : " + maListe.ObtenirElement(5));
+
+            for (int i = 0; i < 30; i++)
+            {
+                maListe.Ajouter(i);
+            }
+        }
+
+        public class MalIsteGenerique<T>
+        {
+            private int capacite;
+            private int nbElements;
+            private T[] tableau;
+
+            public MalIsteGenerique()
+            {
+                capacite = 10;
+                nbElements = 0;
+                tableau = new T[capacite];
+            }
+
+            public void Ajouter(T element)
+            {
+                if (nbElements >= capacite)
+                {
+                    capacite *= 2; // arbitrairement, on double la capacité
+                    T[] copierTableau = new T[capacite];
+                    for (int i = 0; i < tableau.Length; i++)
+                    {
+                        copierTableau[i] = tableau[i];
+                    }
+                    tableau = copierTableau;
+                }
+                tableau[nbElements] = element;
+                nbElements++;
+            }
+
+            public T ObtenirElement(int indice)
+            {
+                if (indice < 0 || indice >= nbElements)
+                {
+                    Console.WriteLine("L'indice n'est pas bon");
+                    return default(T);
+                }
+                return tableau[indice];
+            }
         }
 
         private static void TestEchanger()
@@ -127,10 +304,16 @@ namespace TestGenerics
         }
     }
 
-    internal class Voiture
+    internal class Voiture : IComparable<Voiture> //Interface générique
     {
         public string Couleur { get; set; }
         public string Marque { get; set; }
+        public int Vitesse { get; set; }
+
+        public int CompareTo(Voiture obj)
+        {
+            return Vitesse.CompareTo(obj.Vitesse);
+        }
     }
 
     public static class Afficheur
