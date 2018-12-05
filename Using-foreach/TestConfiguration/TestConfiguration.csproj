@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{232D65C1-4F1E-4D61-A639-CF3C6668109E}</ProjectGuid>
+    <ProjectGuid>{8F0FB8A7-ACC7-4D8F-B0FD-A0FD51024F87}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TPListeChaineeGenerique</RootNamespace>
-    <AssemblyName>TPListeChaineeGenerique</AssemblyName>
+    <RootNamespace>TestConfiguration</RootNamespace>
+    <AssemblyName>TestConfiguration</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

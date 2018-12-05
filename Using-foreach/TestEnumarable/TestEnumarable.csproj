@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{232D65C1-4F1E-4D61-A639-CF3C6668109E}</ProjectGuid>
+    <ProjectGuid>{CFAF38B5-97AD-462F-83A5-3A9BF92177C2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TPListeChaineeGenerique</RootNamespace>
-    <AssemblyName>TPListeChaineeGenerique</AssemblyName>
+    <RootNamespace>TestEnumarable</RootNamespace>
+    <AssemblyName>TestEnumarable</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
